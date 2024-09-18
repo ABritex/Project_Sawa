@@ -16,7 +16,7 @@ class Bot:
         config = configparser.ConfigParser()
         config.read(filename)
         return config
-
+    
     def load_lore(self, filename):
         if not os.path.exists(filename):
             print(f"Warning: {filename} not found. Using default lore.")
