@@ -1,0 +1,11 @@
+keyboard
+pyaudio
+whisper
+colorama
+httpx
+requests
+soundfile
+sounddevice
+transformers
+alkana
+configparser
