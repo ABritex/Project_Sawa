@@ -9,3 +9,4 @@ sounddevice
 transformers
 alkana
 configparser
+pykakasi 
