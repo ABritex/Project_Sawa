@@ -1,19 +1,23 @@
+import os
 import requests
 import json
 import soundfile as sf
 import sounddevice as sd
 import asyncio
-import os
 from transformers import pipeline  
 import time
 import warnings
+from utils.api_loader import VOICEVOX_URL, SPEAKER_ID  # Import from your API loader
+
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 class TTS:
     def __init__(self):
-        self.wav_path = "sounds/output.wav"  # Ensure this path exists
-        self.voicevox_url = "http://127.0.0.1:50021"
-        self.speaker_id = 14  # ID for a young female voice in VOICEVOX
+        self.wav_path = "sounds/output.wav"
+        
+        self.voicevox_url = VOICEVOX_URL
+        self.speaker_id = SPEAKER_ID
+        
         self.sentiment_analyzer = pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
 
     def analyze_sentiment(self, text):

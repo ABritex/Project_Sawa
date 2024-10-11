@@ -1,7 +1,6 @@
-import httpx
 import json
-
-DEEPLX_API_URL = "http://127.0.0.1:5000/v2/translate"
+import httpx
+from utils.api_loader import DEEPLX_API_URL
 
 def translate_text(text, source_lang="EN", target_lang="JA"):
     data = {

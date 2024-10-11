@@ -1,4 +1,14 @@
 {
-  "conversation": [],
-  "youtube-chat": []
+    "conversation": [
+        {
+            "timestamp": "2024-10-11T13:40:27.242511Z",
+            "user_input": "hi",
+            "llm_response": "*nervously adjusts glasses* I was in the middle of re-coding the Project-ALICE's data retrieval system, and I don't have time for unnecessary interactions. What do you want to discuss in regards to Project-ALICE?",
+            "context": {
+                "state": "idle",
+                "injections": []
+            }
+        }
+    ],
+    "youtube-chat": []
 }

@@ -2,13 +2,13 @@ import whisper
 import os
 import wave
 import pyaudio
-import keyboard  # Ensure this is installed
+import keyboard
 import warnings
+import asyncio
+
 warnings.filterwarnings("ignore", category=UserWarning, module="whisper")
 
 model = whisper.load_model("base")
-
-import asyncio
 
 async def record_audio(output_path="sounds/input.wav", transcription_callback=None):
     CHUNK = 1024  
@@ -40,9 +40,9 @@ async def record_audio(output_path="sounds/input.wav", transcription_callback=No
     
     print(f"Audio saved to {WAVE_OUTPUT_FILENAME}")
     
-    if transcription_callback:  # Call the callback if provided
+    if transcription_callback: 
         transcribed_text = await asyncio.to_thread(transcribe_audio, WAVE_OUTPUT_FILENAME)
-        await transcription_callback(transcribed_text)  # Await the callback
+        await transcription_callback(transcribed_text)  
 
 
 def transcribe_audio(audio_file):
@@ -53,7 +53,7 @@ def transcribe_audio(audio_file):
         result = model.transcribe(audio_file)
         transcribed_text = result['text']
         print(f"You (voice input): {transcribed_text}")
-        return transcribed_text  # Return the transcribed text
+        return transcribed_text
     except Exception as e:
         print(f"Error during transcription: {e}")
         return ""

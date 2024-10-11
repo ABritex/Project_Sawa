@@ -31,31 +31,26 @@ class MessageHandler:
     def __init__(self, chat_handler, global_state):
         self.spam_handler = SpamHandler()
         self.chat_handler = chat_handler
-        self.global_state = global_state  # Store global_state
-        self.messages = []  # To keep track of all messages
-
+        self.global_state = global_state 
+        self.messages = [] 
 
     def process_message(self, user, message):
         if self.spam_handler.is_spammer(user):
             print(f"Ignoring message from spammer {user}")
             return None
 
-        self.messages.append((user, message))  # Store the message
-        # Save the YouTube chat message to memory
+        self.messages.append((user, message))  
         self.global_state.memory.yt_chat_save_to_memory(user, message)
-
-        # Call reflection check
         self.chat_handler.check_and_reflect(self.messages, self.global_state)
-
-        return None  # No response processing for YouTube chat
+        return None
 
 
 
 def fetch_and_handle_messages(youtube_url, global_state):
     video_id = extract_video_id(youtube_url)
     chat = pytchat.create(video_id=video_id)
-    chat_handler = ChatHandler()  # Create a ChatHandler instance
-    handler = MessageHandler(chat_handler, global_state)  # Pass global_state to MessageHandler
+    chat_handler = ChatHandler()
+    handler = MessageHandler(chat_handler, global_state)
 
     print(f"Monitoring YouTube chat for video: {youtube_url}")
     while chat.is_alive():

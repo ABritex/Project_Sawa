@@ -4,7 +4,23 @@
 pip install -r requirements.txt
 ```
 
-create a "config.ini" in /configs/ directory
+create a ".env" in /configs/ directory
+
+```
+# Others
+# GEMINI_API_KEY=
+# OBS_HOST=
+# OBS_PORT=
+# OBS_PASSWORD=
+# YOUTUBE_API_KEY=
+
+# ENV
+LLAMA_API_KEY=
+DEEPLX_API_URL=
+VOICEVOX_URL=
+SPEAKER_ID=
+
+```
 
 ## Used:
 
@@ -27,7 +43,7 @@ SawaSama/
 │   └─ Sawa_State.py
 ├─ configs/
 │   ├─ lore.txt
-│   ├─ config.ini
+│   ├─ .env
 │   └─ conversation.json
 ├─ modules/
 │   ├─ globals.py
@@ -40,7 +56,8 @@ SawaSama/
 │   ├─ output.wav
 │   └─ input.wav
 ├─ utils/
-│   └─  subtitle.py
+│   ├─ env_loader.py
+│   └─ subtitle.py
 ├─ requirements.txt
 ├─ main.py
 ├─ run.py
