@@ -12,8 +12,7 @@ async def handle_terminal_input():
         user_input = input(f"{green}You{fr}: ")
         if user_input.lower() == 'exit':
             return
-        await global_state.set_user_input('terminal', user_input)  # Await the async function
-
+        await global_state.set_user_input('terminal', user_input)  
 
 async def handle_voice_input():
     print("Press and hold Right Shift to start voice input...")
@@ -28,8 +27,7 @@ async def handle_youtube_input():
     youtube_url = input("Enter the YouTube URL: ")
     if youtube_url:
         print("Listening to YouTube stream...")
-        await global_state.youtube_url_fetch(youtube_url)  # Only pass youtube_url
-
+        await global_state.youtube_url_fetch(youtube_url)  
 
 async def main():
     print("Welcome to SawaSama AI Vtuber!")

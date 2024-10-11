@@ -7,17 +7,15 @@ import asyncio
 from transformers import pipeline  
 import time
 import warnings
-from utils.api_loader import VOICEVOX_URL, SPEAKER_ID  # Import from your API loader
+from utils.api_loader import VOICEVOX_URL, SPEAKER_ID
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 class TTS:
     def __init__(self):
         self.wav_path = "sounds/output.wav"
-        
         self.voicevox_url = VOICEVOX_URL
         self.speaker_id = SPEAKER_ID
-        
         self.sentiment_analyzer = pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
 
     def analyze_sentiment(self, text):
@@ -49,4 +47,4 @@ class TTS:
         await asyncio.sleep(len(data) / fs)
         sd.wait()
         time.sleep(3)
-        # os.remove(file_path)  deletes the audio file
+        # os.remove(file_path)  # deletes the audio file
