@@ -31,15 +31,12 @@ async def record_audio(output_path="sounds/input.wav", transcription_callback=No
     stream.stop_stream()
     stream.close()
     p.terminate()
-    
     with wave.open(WAVE_OUTPUT_FILENAME, 'wb') as wf:
         wf.setnchannels(CHANNELS)
         wf.setsampwidth(p.get_sample_size(FORMAT))
         wf.setframerate(RATE)
         wf.writeframes(b''.join(frames))
-    
     print(f"Audio saved to {WAVE_OUTPUT_FILENAME}")
-    
     if transcription_callback: 
         transcribed_text = await asyncio.to_thread(transcribe_audio, WAVE_OUTPUT_FILENAME)
         await transcription_callback(transcribed_text)  

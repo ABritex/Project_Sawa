@@ -1,5 +1,3 @@
-# Sawa_State.py
-
 class SawaState:
     def __init__(self):
         self.state = "idle"

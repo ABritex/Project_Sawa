@@ -1,4 +1,3 @@
-# main.py
 import sys
 import keyboard  
 from modules.globals import global_state
